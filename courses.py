@@ -11,37 +11,34 @@ from regdetails import class_details
 #-----------------------------------------------------------------------
 app = flask.Flask(__name__, template_folder='.')
 
+# @app.route('/', methods=['GET'])
+# @app.route('/index', methods=['GET'])
+# def index():
+
+#     html_code = flask.render_template('index.html')
+#     response = flask.make_response(html_code)
+#     return response
+
 @app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
 def index():
-
-    html_code = flask.render_template('index.html')
-    response = flask.make_response(html_code)
-    return response
-
-@app.route('/searchresults', methods=['GET'])
-def searchresults():
     dept = flask.request.args.get('dept')
-    print(dept)
-    # num = flask.request.args.get('coursenum')
-    # area = flask.request.args.get('area')
-    # title = flask.request.args.get('title')
-
+    # print(dept)
+    num = flask.request.args.get('coursenum')
+    area = flask.request.args.get('area')
+    title = flask.request.args.get('title')
     try:
         if dept is None:
-            dept = ""
-        # if num is None:
-        #     num = ""
-        # if area is None:
-        #     area = ""
-        # if title is None:
-        #     title = ""
+            dept = ''
+        if num is None:
+            num = ''
+        if area is None:
+            area = ''
+        if title is None:
+            title = ''
 
         #handles the database (querying)
-        table = database.course_overviews(dept, None, None, None)
-        print(dept)
-        html_code = flask.render_template('searchpage.html',
-            data=table)
+        table = database.course_overviews(dept, num, area, title)
+        html_code = flask.render_template('index.html', table=table)
         response = flask.make_response(html_code)
 
         #sets the cookies for later (another search)
