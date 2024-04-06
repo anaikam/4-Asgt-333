@@ -62,7 +62,7 @@
                 let encodedNum = encodeURIComponent(num);
                 let encodedArea = encodeURIComponent(area);
                 let encodedTitle = encodeURIComponent(title);
-                let url = '/?dept=' + encodedDept + '&coursenum=' + encodedNum + '&area=' + encodedArea + '&title=' + encodedTitle;
+                let url = '/searchresults?dept=' + encodedDept + '&coursenum=' + encodedNum + '&area=' + encodedArea + '&title=' + encodedTitle;
                 // error statements???
                 if (request != null)
                     request.abort();

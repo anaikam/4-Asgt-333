@@ -1,0 +1,25 @@
+<div id="class_table">
+    <table id="overviewsTable">
+        <style>
+            #table_header th {
+                font-weight:bold;
+            }
+        </style>
+        <tr id="table_header">
+            <th>ClassId</th>
+            <th>Dept</th>
+            <th>Num</th>
+            <th>Area</th>
+            <th>Title</th>
+        </tr>      
+        {% for row in table: %}
+            <tr>
+                <th><a href="{{ url_for('regdetails', classid=row[0]) }}">
+                    <text value="{{ row[0] }}">{{row[0]}}</text></a></th>
+                <th>{{row[1]}}</th>
+                <th>{{row[2]}}</th>
+                <th>{{row[3]}}</th>
+                <th>{{row[4]}}</th>
+            </tr>
+        {% endfor %}
+</table>

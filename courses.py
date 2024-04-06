@@ -20,13 +20,23 @@ app = flask.Flask(__name__, template_folder='.')
 #     return response
 
 @app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
 def index():
+    table = database.course_overviews("", "", "", "")
+    html_code = flask.render_template('index.html', table = table)
+    response = flask.make_response(html_code)
+    return response
+
+
+@app.route('/searchresults', methods=['GET'])
+def search_results():
     dept = flask.request.args.get('dept')
     # print(dept)
     num = flask.request.args.get('coursenum')
     area = flask.request.args.get('area')
     title = flask.request.args.get('title')
     try:
+        print(dept)
         if dept is None:
             dept = ''
         if num is None:
@@ -38,7 +48,7 @@ def index():
 
         #handles the database (querying)
         table = database.course_overviews(dept, num, area, title)
-        html_code = flask.render_template('index.html', table=table)
+        html_code = flask.render_template('courses.html', table=table)
         response = flask.make_response(html_code)
 
         #sets the cookies for later (another search)
