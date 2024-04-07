@@ -21,7 +21,7 @@
 
         <div class="container-fluid">
             <h2>Class Details (class id {{classid}})</h2>
-            <table class="table table-striped">
+            <table id="classDetailsTable" class="table table-striped">
                 <tr>
                     <th><strong>Course Id</strong></th>
                     <th>{{general_table[0]}}</th>
@@ -49,7 +49,7 @@
             </table>
 
             <h2>Course Details (course id {{general_table[0]}})</h2>
-            <table class="table table-striped">
+            <table id="courseDetailsTable" class="table table-striped">
                 {% for row in dept_table: %}
                     <tr>
                         <th><strong>Dept and Number</strong></th>
