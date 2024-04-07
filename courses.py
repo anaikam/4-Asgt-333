@@ -106,4 +106,3 @@ def regdetails():
         print(str(ex), file=sys.stderr)
         response = flask.make_response(html_code)
         return response
-        
