@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
         <style>
-            .header, .footer {background-color:#295078; color:white}
+            .header, .footer {background-color:#295078; color:white;}
         </style>
     </head>
 
     <body>
-        <div class="container-fluid, header">
+        <!-- style="border-bottom:24px solid #295078;"-->
+        <div class="container-fluid header">
             <h1 class="text-center">Registrar's Office: Class Search</h1>
             <div class="row">
                 <div class="col-sm-3">
@@ -26,26 +27,27 @@
                     <input type="text" class="form-control" id="titleInput" placeholder="Title" autoFocus>
                 </div>
             </div>
-            <hr>
+            <br>
         </div>
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="border" id="resultsDiv"></div>
-            </div>
+        
+        <div class="container-fluid">
+            <div id="resultsDiv"></div>
+        </div>
+        
+        <div class="footer" style="text-align: center;">
+            Created by Anaika Mehra and Vivian Ha
         </div>
 
         <script src=
         "https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
         </script>
         <script>
-            // only for development, not for final - REMOVE LATER
-            // 'use strict';
-            // $('#resultsDiv').html(table);
             function handleResponse(data) {
                 $('#resultsDiv').html(data);
             }
         
             function handleError(request) {
+                // is this correct??
                 if (request.statusText !== 'abort')
                     alert('Error: Failed to fetch data from server');
             }
@@ -57,7 +59,7 @@
                 let num = $('#numInput').val();
                 let area = $('#areaInput').val();
                 let title = $('#titleInput').val();
-                // let table = $('#table').val()
+
                 let encodedDept = encodeURIComponent(dept);
                 let encodedNum = encodeURIComponent(num);
                 let encodedArea = encodeURIComponent(area);
@@ -83,10 +85,7 @@
             }
             
             function setup() {
-                // getAmPm();
-                // window.setInterval(getAmPm, 1000);
-                // getDateTime();
-                // window.setInterval(getDateTime, 1000);
+                getResults();
                 $('#deptInput').on('input', debouncedGetResults);
                 $('#numInput').on('input', debouncedGetResults);
                 $('#areaInput').on('input', debouncedGetResults);
@@ -95,90 +94,5 @@
             $('document').ready(setup);
         </script>
     </body>
-        <!-- <script src="static/jquery-3.7.1.min.js"></script> -->
-
-        <!-- <form action="/" method="get">
-            <table>
-                <tr>
-                    <td align="right">Dept:</td>
-                    <td align="left">
-                        <input type="text" id="deptInput" name="dept" value = "{{ dept }}" autofocus>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">Number:</td>
-                    <td align="left">
-                        <input type="text" id="coursenumInput" name="coursenum" value = "{{ coursenum }}" autofocus>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">Area:</td>
-                    <td align="left">
-                        <input type="text" id="areaInput" name="area" value = "{{ area }}" autofocus>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">Title:</td>
-                    <td align="left">
-                        <input type="text" id="titleInput" name="title" value = "{{ title }}" autofocus>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" id="submitButton" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
-
-            <style>
-            #class_table table{
-                width: auto;
-                border: 1px outset rgba(0, 0, 0, 0.75);
-                text-align: left;
-                font-weight: normal;
-            }
-            #class_table tr, #class_table td, #class_table th {
-                width: auto;
-                border: 1px inset rgba(0, 0, 0, 0.75);
-                text-align: left;
-                font-weight: normal;
-            }
-        </style>
-        <hr>
-
-        <div id="class_table">
-            <table id="overviewsTable">
-                <style>
-                    #table_header th {
-                        font-weight:bold;
-                    }
-                </style>
-                <tr id="table_header">
-                    <th>ClassId</th>
-                    <th>Dept</th>
-                    <th>Num</th>
-                    <th>Area</th>
-                    <th>Title</th>
-                </tr>      
-                {% for row in table: %}
-                    <tr>
-                        <th><a href="{{ url_for('regdetails', classid=row[0]) }}">
-                            <text value="{{ row[0] }}">{{row[0]}}</text></a></th>
-                        <th>{{row[1]}}</th>
-                        <th>{{row[2]}}</th>
-                        <th>{{row[3]}}</th>
-                        <th>{{row[4]}}</th>
-                    </tr>
-                {% endfor %}
-        </table>
-        <br>
-        </div>
-
-    </body>
-    <hr>
-    <footer>
-        Created by Anaika Mehra and Vivian Ha.
-    </footer>
-    <hr> -->
 </html>
 

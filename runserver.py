@@ -10,7 +10,7 @@ import courses
 def main():
 
     parser = argparse.ArgumentParser(
-        description="Server for the registrar application")
+        description="The registrar application")
 
     parser.add_argument('port', nargs=1, type = int,
         help='the port at which the server should listen')

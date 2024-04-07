@@ -18,7 +18,6 @@ def class_details(classid):
         with contextlib.closing(connection.cursor()) as cursor:
             # First prepared statement to find details given
             # the id of the class.
-            print("goes in with statement ")
             stmt_str = "SELECT classes.courseid, days, starttime, "
             stmt_str += "endtime, bldg, roomnum, area, title, "
             stmt_str += "descrip, prereqs "
@@ -29,12 +28,8 @@ def class_details(classid):
             stmt_str += "crosslistings.courseid "
             stmt_str += "AND classid LIKE ? "
             stmt_str += "ORDER BY coursenum"
-            print(stmt_str)
-            print([classid])
-            print(type([classid]))
             cursor.execute(stmt_str, [classid])
             table = cursor.fetchall()
-            print("1")
 
             # Second prepared statement to find the professor names
             # for the respective class. We can't do this in the
@@ -59,10 +54,7 @@ def class_details(classid):
             stmt_str_3 += "crosslistings.courseid "
             stmt_str_3 += "AND classid LIKE ? "
             stmt_str_3 += "ORDER BY dept, coursenum"
-            print("complete statement")
-            print(stmt_str_3)
             cursor.execute(stmt_str_3, [classid])
-            print("fails at execute of classid")
             table3 = cursor.fetchall()
 
             return table, table2, table3

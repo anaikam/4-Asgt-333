@@ -11,14 +11,6 @@ from regdetails import class_details
 #-----------------------------------------------------------------------
 app = flask.Flask(__name__, template_folder='.')
 
-# @app.route('/', methods=['GET'])
-# @app.route('/index', methods=['GET'])
-# def index():
-
-#     html_code = flask.render_template('index.html')
-#     response = flask.make_response(html_code)
-#     return response
-
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
@@ -27,16 +19,13 @@ def index():
     response = flask.make_response(html_code)
     return response
 
-
 @app.route('/searchresults', methods=['GET'])
 def search_results():
     dept = flask.request.args.get('dept')
-    # print(dept)
     num = flask.request.args.get('coursenum')
     area = flask.request.args.get('area')
     title = flask.request.args.get('title')
     try:
-        print(dept)
         if dept is None:
             dept = ''
         if num is None:
@@ -50,12 +39,6 @@ def search_results():
         table = database.course_overviews(dept, num, area, title)
         html_code = flask.render_template('courses.html', table=table)
         response = flask.make_response(html_code)
-
-        #sets the cookies for later (another search)
-        # response.set_cookie('prev_dept', dept)
-        # response.set_cookie('prev_num', num)
-        # response.set_cookie('prev_area', area)
-        # response.set_cookie('prev_title', title)
         return response
 
     #handle error cases
@@ -70,10 +53,10 @@ def search_results():
 @app.route('/regdetails', methods=['GET'])
 def regdetails():
     classid = flask.request.args.get('classid')
-    dept = flask.request.cookies.get('prev_dept')
-    num = flask.request.cookies.get('prev_num')
-    area = flask.request.cookies.get('prev_area')
-    title = flask.request.cookies.get('prev_title')
+    dept = flask.request.args.get('dept')
+    num = flask.request.args.get('coursenum')
+    area = flask.request.args.get('area')
+    title = flask.request.args.get('title')
 
     #handles the missing classid, non-int classid errors
     if classid in ('', None):
