@@ -10,7 +10,6 @@
     </head>
 
     <body>
-        <!-- style="border-bottom:24px solid #295078;"-->
         <div class="container-fluid header">
             <h1 class="text-center">Registrar's Office: Class Search</h1>
             <div class="row">
@@ -47,7 +46,7 @@
             }
         
             function handleError(request) {
-                // is this correct??
+                // if an AJAX call fails
                 if (request.statusText !== 'abort')
                     alert('Error: Failed to fetch data from server');
             }
@@ -64,8 +63,10 @@
                 let encodedNum = encodeURIComponent(num);
                 let encodedArea = encodeURIComponent(area);
                 let encodedTitle = encodeURIComponent(title);
-                let url = '/searchresults?dept=' + encodedDept + '&coursenum=' + encodedNum + '&area=' + encodedArea + '&title=' + encodedTitle;
-                // error statements???
+                let url = '/searchresults?dept=' + encodedDept 
+                    + '&coursenum=' + encodedNum + '&area=' 
+                    + encodedArea + '&title=' + encodedTitle;
+
                 if (request != null)
                     request.abort();
                 let requestData = {
