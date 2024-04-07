@@ -61,6 +61,6 @@ def course_overviews(dept, num, area, title):
                 # Using the cursor to create the tuple.
                 table = cursor.fetchall()
                 return table
-        
+
     except Exception as ex:
         return ex

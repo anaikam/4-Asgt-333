@@ -25,7 +25,7 @@ def search_results():
     num = flask.request.args.get('coursenum')
     area = flask.request.args.get('area')
     title = flask.request.args.get('title')
-    
+
     if dept is None:
         dept = ''
     if num is None:
@@ -38,7 +38,7 @@ def search_results():
         #handles the database (querying)
         table = database.course_overviews(dept, num, area, title)
         html_code = flask.render_template('courses.html', table=table)
-        response = flask.make_response(html_code)   
+        response = flask.make_response(html_code)
         return response
 
     #handle error cases
@@ -92,9 +92,10 @@ def regdetails():
 
     #handles no classid error
     except Exception as ex:
-        if(str(ex) == "cannot unpack non-iterable OperationalError object"):
-            html_code = flask.render_template('error_details.html', ex = ex,
-            message = "A server error occurred. "
+        if str(ex) == ("cannot unpack non-iterable" +
+            " OperationalError object"):
+            html_code = flask.render_template('error_details.html'
+                , ex = ex, message = "A server error occurred. "
             + "Please contact the system administrator.")
             print(str(ex), file=sys.stderr)
             response = flask.make_response(html_code)
