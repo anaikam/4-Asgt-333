@@ -43,10 +43,10 @@ def search_results():
 
     #handle error cases
     except Exception as ex:
-        html_code = flask.render_template('error_courses.html', ex = ex,
-            message = "A server error occurred. "
+        html_code = flask.render_template('error_courses.html',
+            ex = ex, message = "A server error occurred. "
             + "Please contact the system administrator.")
-        print(str(ex), file=sys.stderr)
+        print(sys.argv[0]+': ', str(ex), file=sys.stderr)
         response = flask.make_response(html_code)
         return response
 
@@ -97,12 +97,12 @@ def regdetails():
             html_code = flask.render_template('error_details.html'
                 , ex = ex, message = "A server error occurred. "
             + "Please contact the system administrator.")
-            print(str(ex), file=sys.stderr)
+            print(sys.argv[0]+': ', str(ex), file=sys.stderr)
             response = flask.make_response(html_code)
             return response
         html_code = flask.render_template('error_details.html',
             ex = ex, message = "no class with classid "
             + classid + " exists")
-        print(str(ex), file=sys.stderr)
+        print(sys.argv[0]+': ', str(ex), file=sys.stderr)
         response = flask.make_response(html_code)
         return response
