@@ -1,0 +1,55 @@
+vh8154_anaikam
+
+Vivian Ha and Anaika Mehra
+
+Vivian’s contribution: Anaika and I mostly had gone on zoom and
+pair programmed for this assignment. I mainly handled formatting
+the assignment (bootstrap) and making sure that each table/header/etc
+matched the assignment specifications. I additionally handled some
+of the error handling in terms of the course table initially popping
+up, making sure lineedits worked, and the general testing process
+of the assignment. Finally, I handled debouncing/setup in index.
+I learned more about javascript, jquery, and bootstrap in this
+assignment, especially the differences between
+bootstrap and just regular css.
+
+Anaika’s contribution: Vivian and I were pair programming for some
+aspects of the assignment. We both also spent individual time looking
+through errors, formatting, and attending office hours. I focused on
+handling the initial display of classes, details, and errors with the
+new technique of generating outputs when user enters data(without the
+full formatting) and learned more about javascript and jquery in the
+process. I followed the penny program as reference.
+I also worked on error handling and focused specifically on the
+database errors as we got them wrrong in the previous assignment.
+I also did some testing for the programs.
+
+Help received:
+Haichen Dong (office hours): We got help from Haichen in understanding
+the interaction between jquery and the courses python program. He also helped us with a display error.
+Professor Dondero: We got help from Professor Dondero about formatting on ed.
+
+Sources:
+https://stackoverflow.com/questions/29104807/bootstrap-margin
+-or-padding-on-right-side-of-all-pages-in-my-site
+
+https://www.w3schools.com/bootstrap4/bootstrap_containers.asp
+
+https://www.quora.com/How-do-I-make-a-link-open-in-a-popup
+-window#:~:text=You%20can%20use%20the%20target%20attribute
+%20with%20the%20value%20_blank,a%20popup%20window
+
+https://getbootstrap.com/docs/4.0/content/tables/
+
+
+Time spent on assignment: 7 hours
+
+Your assessment of the assignment:
+The assignment served as a great introduction to jquery and bootsrap.
+We are learning a lot through the sequential assignments that build
+on each other.
+
+(Optionally) Any information that will help us to grade your work in
+the most favorable light. In particular you must describe all known
+bugs.
+N/A
